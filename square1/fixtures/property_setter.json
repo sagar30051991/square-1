@@ -1,5 +1,298 @@
 [
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
+  "default_value": null, 
+  "doc_type": "Quotation", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "in_words", 
+  "modified": "2016-03-10 12:45:19.662650", 
+  "name": "Quotation-in_words-hidden", 
+  "property": "hidden", 
+  "property_type": "Check", 
+  "value": "0"
+ }, 
+ {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
+  "default_value": null, 
+  "doc_type": "Quotation", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "in_words", 
+  "modified": "2016-03-10 12:45:19.738626", 
+  "name": "Quotation-in_words-print_hide", 
+  "property": "print_hide", 
+  "property_type": "Check", 
+  "value": "0"
+ }, 
+ {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
+  "default_value": null, 
+  "doc_type": "Sales Order", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "in_words", 
+  "modified": "2016-03-10 12:45:19.812668", 
+  "name": "Sales Order-in_words-hidden", 
+  "property": "hidden", 
+  "property_type": "Check", 
+  "value": "0"
+ }, 
+ {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
+  "default_value": null, 
+  "doc_type": "Sales Order", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "in_words", 
+  "modified": "2016-03-10 12:45:19.945487", 
+  "name": "Sales Order-in_words-print_hide", 
+  "property": "print_hide", 
+  "property_type": "Check", 
+  "value": "0"
+ }, 
+ {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
+  "default_value": null, 
+  "doc_type": "Sales Invoice", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "in_words", 
+  "modified": "2016-03-10 12:45:20.071295", 
+  "name": "Sales Invoice-in_words-hidden", 
+  "property": "hidden", 
+  "property_type": "Check", 
+  "value": "0"
+ }, 
+ {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
+  "default_value": null, 
+  "doc_type": "Sales Invoice", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "in_words", 
+  "modified": "2016-03-10 12:45:20.195476", 
+  "name": "Sales Invoice-in_words-print_hide", 
+  "property": "print_hide", 
+  "property_type": "Check", 
+  "value": "0"
+ }, 
+ {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
+  "default_value": null, 
+  "doc_type": "Delivery Note", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "in_words", 
+  "modified": "2016-03-10 12:45:20.343558", 
+  "name": "Delivery Note-in_words-hidden", 
+  "property": "hidden", 
+  "property_type": "Check", 
+  "value": "0"
+ }, 
+ {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
+  "default_value": null, 
+  "doc_type": "Delivery Note", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "in_words", 
+  "modified": "2016-03-10 12:45:20.500842", 
+  "name": "Delivery Note-in_words-print_hide", 
+  "property": "print_hide", 
+  "property_type": "Check", 
+  "value": "0"
+ }, 
+ {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
+  "default_value": null, 
+  "doc_type": "Supplier Quotation", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "in_words", 
+  "modified": "2016-03-10 12:45:20.657676", 
+  "name": "Supplier Quotation-in_words-hidden", 
+  "property": "hidden", 
+  "property_type": "Check", 
+  "value": "0"
+ }, 
+ {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
+  "default_value": null, 
+  "doc_type": "Supplier Quotation", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "in_words", 
+  "modified": "2016-03-10 12:45:20.742346", 
+  "name": "Supplier Quotation-in_words-print_hide", 
+  "property": "print_hide", 
+  "property_type": "Check", 
+  "value": "0"
+ }, 
+ {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
+  "default_value": null, 
+  "doc_type": "Purchase Order", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "in_words", 
+  "modified": "2016-03-10 12:45:20.821918", 
+  "name": "Purchase Order-in_words-hidden", 
+  "property": "hidden", 
+  "property_type": "Check", 
+  "value": "0"
+ }, 
+ {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
+  "default_value": null, 
+  "doc_type": "Purchase Order", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "in_words", 
+  "modified": "2016-03-10 12:45:20.955731", 
+  "name": "Purchase Order-in_words-print_hide", 
+  "property": "print_hide", 
+  "property_type": "Check", 
+  "value": "0"
+ }, 
+ {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
+  "default_value": null, 
+  "doc_type": "Purchase Invoice", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "in_words", 
+  "modified": "2016-03-10 12:45:21.081296", 
+  "name": "Purchase Invoice-in_words-hidden", 
+  "property": "hidden", 
+  "property_type": "Check", 
+  "value": "0"
+ }, 
+ {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
+  "default_value": null, 
+  "doc_type": "Purchase Invoice", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "in_words", 
+  "modified": "2016-03-10 12:45:21.193846", 
+  "name": "Purchase Invoice-in_words-print_hide", 
+  "property": "print_hide", 
+  "property_type": "Check", 
+  "value": "0"
+ }, 
+ {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
+  "default_value": null, 
+  "doc_type": "Purchase Receipt", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "in_words", 
+  "modified": "2016-03-10 12:45:21.308903", 
+  "name": "Purchase Receipt-in_words-hidden", 
+  "property": "hidden", 
+  "property_type": "Check", 
+  "value": "0"
+ }, 
+ {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
+  "default_value": null, 
+  "doc_type": "Purchase Receipt", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "in_words", 
+  "modified": "2016-03-10 12:45:21.406741", 
+  "name": "Purchase Receipt-in_words-print_hide", 
+  "property": "print_hide", 
+  "property_type": "Check", 
+  "value": "0"
+ }, 
+ {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
+  "default_value": null, 
+  "doc_type": "Item", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "item_code", 
+  "modified": "2016-03-10 16:36:30.872514", 
+  "name": "Item-item_code-in_list_view", 
+  "property": "in_list_view", 
+  "property_type": "Check", 
+  "value": "1"
+ }, 
+ {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Quotation", 
   "docstatus": 0, 
@@ -13,6 +306,10 @@
   "value": "0"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Quotation", 
   "docstatus": 0, 
@@ -26,6 +323,10 @@
   "value": "1"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Quotation", 
   "docstatus": 0, 
@@ -39,6 +340,10 @@
   "value": "0"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Quotation", 
   "docstatus": 0, 
@@ -52,6 +357,10 @@
   "value": "0"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Sales Order", 
   "docstatus": 0, 
@@ -65,6 +374,10 @@
   "value": "0"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Sales Order", 
   "docstatus": 0, 
@@ -78,6 +391,10 @@
   "value": "1"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Sales Order", 
   "docstatus": 0, 
@@ -91,6 +408,10 @@
   "value": "0"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Sales Order", 
   "docstatus": 0, 
@@ -104,6 +425,10 @@
   "value": "0"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Sales Invoice", 
   "docstatus": 0, 
@@ -117,6 +442,10 @@
   "value": "0"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Sales Invoice", 
   "docstatus": 0, 
@@ -130,6 +459,10 @@
   "value": "1"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Sales Invoice", 
   "docstatus": 0, 
@@ -143,6 +476,10 @@
   "value": "0"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Sales Invoice", 
   "docstatus": 0, 
@@ -156,6 +493,10 @@
   "value": "0"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Delivery Note", 
   "docstatus": 0, 
@@ -169,6 +510,10 @@
   "value": "0"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Delivery Note", 
   "docstatus": 0, 
@@ -182,6 +527,10 @@
   "value": "1"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Delivery Note", 
   "docstatus": 0, 
@@ -195,6 +544,10 @@
   "value": "0"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Delivery Note", 
   "docstatus": 0, 
@@ -208,6 +561,10 @@
   "value": "0"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Item", 
   "docstatus": 0, 
@@ -221,6 +578,10 @@
   "value": "0"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Item", 
   "docstatus": 0, 
@@ -234,6 +595,10 @@
   "value": "1"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Item", 
   "docstatus": 0, 
@@ -247,6 +612,10 @@
   "value": "0"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Item", 
   "docstatus": 0, 
@@ -260,6 +629,10 @@
   "value": "1"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Employee", 
   "docstatus": 0, 
@@ -273,6 +646,10 @@
   "value": "0"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Employee", 
   "docstatus": 0, 
@@ -286,6 +663,10 @@
   "value": "1"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Employee", 
   "docstatus": 0, 
@@ -299,6 +680,10 @@
   "value": "0"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Employee", 
   "docstatus": 0, 
@@ -312,6 +697,10 @@
   "value": "1"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Customer", 
   "docstatus": 0, 
@@ -325,6 +714,10 @@
   "value": "0"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Customer", 
   "docstatus": 0, 
@@ -338,6 +731,10 @@
   "value": "1"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Supplier", 
   "docstatus": 0, 
@@ -351,6 +748,10 @@
   "value": "0"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Supplier", 
   "docstatus": 0, 
@@ -364,6 +765,10 @@
   "value": "1"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Lead", 
   "docstatus": 0, 
@@ -377,6 +782,10 @@
   "value": "\nClient\nChannel Partner\nAdvertisement\nBlog Post\nCampaign\nCall\nCustomer\nExhibition\nSupplier\nWebsite\nEmail"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Lead", 
   "docstatus": 0, 
@@ -390,6 +799,10 @@
   "value": "1"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Customer", 
   "docstatus": 0, 
@@ -403,6 +816,10 @@
   "value": null
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Customer", 
   "docstatus": 0, 
@@ -416,6 +833,10 @@
   "value": "[\"basic_info\", \"naming_series\", \"customer_name\", \"customer_type\", \"lead_name\", \"column_break0\", \"customer_group\", \"territory\", \"channel_partner\", \"tax_id\", \"is_frozen\", \"currency_and_price_list\", \"default_currency\", \"default_price_list\", \"address_contacts\", \"address_html\", \"column_break1\", \"contact_html\", \"default_receivable_accounts\", \"accounts\", \"column_break2\", \"credit_days_based_on\", \"credit_days\", \"credit_limit\", \"more_info\", \"customer_details\", \"website\", \"sales_team_section_break\", \"default_sales_partner\", \"default_commission_rate\", \"sales_team_section\", \"sales_team\", \"communications\"]"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Quotation", 
   "docstatus": 0, 
@@ -429,6 +850,10 @@
   "value": "\nClient\nChannel Partner\nExisting Customer\nReference\nAdvertisement\nCold Calling\nExhibition\nSupplier Reference\nMass Mailing\nCustomer's Vendor\nCampaign"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Sales Order Item", 
   "docstatus": 0, 
@@ -442,6 +867,10 @@
   "value": null
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Sales Order Item", 
   "docstatus": 0, 
@@ -455,6 +884,10 @@
   "value": "[\"item_code\", \"customer_item_code\", \"col_break1\", \"item_name\", \"area\", \"description\", \"area_location\", \"image\", \"image_view\", \"quantity_and_rate\", \"qty\", \"price_list_rate\", \"discount_percentage\", \"col_break2\", \"stock_uom\", \"catelog_name\", \"shade_no\", \"base_price_list_rate\", \"section_break_simple1\", \"rate\", \"amount\", \"col_break3\", \"base_rate\", \"base_amount\", \"pricing_rule\", \"section_break_24\", \"net_rate\", \"net_amount\", \"column_break_27\", \"base_net_rate\", \"base_net_amount\", \"drop_ship_section\", \"delivered_by_supplier\", \"supplier\", \"warehouse_and_reference\", \"warehouse\", \"target_warehouse\", \"prevdoc_docname\", \"brand\", \"item_group\", \"page_break\", \"col_break4\", \"projected_qty\", \"actual_qty\", \"ordered_qty\", \"delivered_qty\", \"returned_qty\", \"billed_amt\", \"planned_qty\", \"produced_qty\", \"item_tax_rate\", \"transaction_date\", \"section_break_5\", \"column_break_7\"]"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Lead", 
   "docstatus": 0, 
@@ -468,6 +901,10 @@
   "value": null
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Lead", 
   "docstatus": 0, 
@@ -481,6 +918,10 @@
   "value": "[\"lead_details\", \"naming_series\", \"lead_name\", \"company_name\", \"email_id\", \"col_break123\", \"status\", \"source\", \"channel_partner\", \"campaign_name\", \"client_name\", \"site_name\", \"section_break_12\", \"lead_owner\", \"column_break_14\", \"contact_by\", \"contact_date\", \"contact_info\", \"address_desc\", \"address_html\", \"column_break2\", \"phone\", \"mobile_no\", \"fax\", \"website\", \"territory\", \"more_info\", \"type\", \"market_segment\", \"industry\", \"request_type\", \"fiscal_year\", \"column_break3\", \"company\", \"unsubscribed\", \"blog_subscriber\", \"customer\"]"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Quotation", 
   "docstatus": 0, 
@@ -494,6 +935,10 @@
   "value": null
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Quotation", 
   "docstatus": 0, 
@@ -507,6 +952,10 @@
   "value": "[\"customer_section\", \"column_break0\", \"title\", \"naming_series\", \"quotation_to\", \"customer\", \"lead\", \"customer_name\", \"address_display\", \"contact_display\", \"contact_mobile\", \"client_name\", \"contact_email\", \"column_break1\", \"amended_from\", \"company\", \"transaction_date\", \"order_type\", \"currency_and_price_list\", \"currency\", \"conversion_rate\", \"column_break2\", \"selling_price_list\", \"price_list_currency\", \"plc_conversion_rate\", \"ignore_pricing_rule\", \"items_section\", \"items\", \"sec_break23\", \"base_total\", \"base_net_total\", \"column_break_28\", \"total\", \"net_total\", \"taxes_section\", \"taxes_and_charges\", \"column_break_34\", \"shipping_rule\", \"section_break_36\", \"taxes\", \"other_charges_calculation\", \"section_break_39\", \"base_total_taxes_and_charges\", \"column_break_42\", \"total_taxes_and_charges\", \"section_break_44\", \"apply_discount_on\", \"base_discount_amount\", \"column_break_46\", \"additional_discount_percentage\", \"discount_amount\", \"totals\", \"base_grand_total\", \"base_rounded_total\", \"base_in_words\", \"column_break3\", \"grand_total\", \"rounded_total\", \"in_words\", \"terms_section_break\", \"tc_name\", \"terms\", \"contact_section\", \"territory\", \"customer_group\", \"shipping_address_name\", \"shipping_address\", \"col_break98\", \"customer_address\", \"contact_person\", \"channel_partner\", \"print_settings\", \"letter_head\", \"select_print_heading\", \"more_info\", \"campaign\", \"source\", \"order_lost_reason\", \"column_break4\", \"status\", \"fiscal_year\", \"enq_det\"]"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Sales Order", 
   "docstatus": 0, 
@@ -520,6 +969,10 @@
   "value": null
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Sales Order", 
   "docstatus": 0, 
@@ -533,6 +986,10 @@
   "value": "[\"customer_section\", \"column_break0\", \"title\", \"naming_series\", \"customer\", \"customer_name\", \"address_display\", \"contact_display\", \"contact_mobile\", \"client_name\", \"contact_email\", \"order_type\", \"column_break1\", \"amended_from\", \"company\", \"transaction_date\", \"delivery_date\", \"po_no\", \"po_date\", \"shipping_address_name\", \"shipping_address\", \"currency_and_price_list\", \"currency\", \"conversion_rate\", \"column_break2\", \"selling_price_list\", \"price_list_currency\", \"plc_conversion_rate\", \"ignore_pricing_rule\", \"items_section\", \"items\", \"section_break_31\", \"column_break_33a\", \"base_total\", \"base_net_total\", \"column_break_33\", \"total\", \"net_total\", \"taxes_section\", \"taxes_and_charges\", \"column_break_38\", \"shipping_rule\", \"section_break_40\", \"taxes\", \"other_charges_calculation\", \"section_break_43\", \"base_total_taxes_and_charges\", \"column_break_46\", \"total_taxes_and_charges\", \"section_break_48\", \"apply_discount_on\", \"base_discount_amount\", \"column_break_50\", \"additional_discount_percentage\", \"discount_amount\", \"totals\", \"base_grand_total\", \"base_rounded_total\", \"base_in_words\", \"column_break3\", \"grand_total\", \"rounded_total\", \"in_words\", \"advance_paid\", \"packing_list\", \"packed_items\", \"terms_section_break\", \"tc_name\", \"terms\", \"contact_info\", \"col_break45\", \"territory\", \"customer_group\", \"col_break46\", \"customer_address\", \"contact_person\", \"more_info\", \"project_name\", \"fiscal_year\", \"column_break_77\", \"source\", \"campaign\", \"printing_details\", \"letter_head\", \"column_break4\", \"select_print_heading\", \"section_break_78\", \"status\", \"delivery_status\", \"per_delivered\", \"column_break_81\", \"per_billed\", \"billing_status\", \"sales_team_section_break\", \"sales_partner\", \"column_break7\", \"commission_rate\", \"total_commission\", \"section_break1\", \"sales_team\", \"recurring_order\", \"is_recurring\", \"recurring_type\", \"from_date\", \"to_date\", \"repeat_on_day_of_month\", \"end_date\", \"column_break83\", \"next_date\", \"recurring_id\", \"notification_email_address\", \"recurring_print_format\"]"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Order Form Details", 
   "docstatus": 0, 
@@ -546,6 +1003,10 @@
   "value": "Roll Width inches"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Order Form", 
   "docstatus": 0, 
@@ -559,6 +1020,10 @@
   "value": "[\"company_name\", \"address\", \"cole\", \"date\", \"phone\", \"sect\", \"order_details\", \"sec_1\", \"measurement_date\", \"installation_date\", \"order_serviced_by\", \"col2\", \"msmt_time\", \"installation_by\", \"order_date\", \"col3\", \"measurement_by\", \"client_signature\", \"sec1\", \"sec2\"]"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Order Form Details", 
   "docstatus": 0, 
@@ -572,6 +1037,10 @@
   "value": "Follow Ups/Comments"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Order Form Details", 
   "docstatus": 0, 
@@ -585,19 +1054,10 @@
   "value": "[\"installation_location_on_site\", \"catelogue\", \"area_sqft\", \"col_1\", \"product_code\", \"shade_no\", \"sec1\", \"site_dimension\", \"roll_widh_inches\", \"roll_length_feet\", \"col1\", \"area_covered\", \"rolls\", \"follow_ups\"]"
  }, 
  {
-  "default_value": null, 
-  "doc_type": "Order Form Details", 
-  "docstatus": 0, 
-  "doctype": "Property Setter", 
-  "doctype_or_field": "DocType", 
-  "field_name": null, 
-  "modified": "2016-03-08 11:40:11.987163", 
-  "name": "Order Form Details-read_only_onload", 
-  "property": "read_only_onload", 
-  "property_type": "Check", 
-  "value": null
- }, 
- {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Order Form", 
   "docstatus": 0, 
@@ -611,6 +1071,10 @@
   "value": "1"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Order Form", 
   "docstatus": 0, 
@@ -624,19 +1088,10 @@
   "value": "Measurement Time"
  }, 
  {
-  "default_value": null, 
-  "doc_type": "Order Form", 
-  "docstatus": 0, 
-  "doctype": "Property Setter", 
-  "doctype_or_field": "DocType", 
-  "field_name": null, 
-  "modified": "2016-03-08 16:27:33.070506", 
-  "name": "Order Form-read_only_onload", 
-  "property": "read_only_onload", 
-  "property_type": "Check", 
-  "value": null
- }, 
- {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Order Form", 
   "docstatus": 0, 
@@ -650,6 +1105,10 @@
   "value": "1"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Item", 
   "docstatus": 0, 
@@ -663,6 +1122,10 @@
   "value": "[\"name_and_description_section\", \"naming_series\", \"item_code\", \"variant_of\", \"item_name\", \"item_group\", \"stock_uom\", \"column_break0\", \"is_stock_item\", \"disabled\", \"image\", \"image_view\", \"section_break_11\", \"brand\", \"barcode\", \"description\", \"inventory\", \"default_warehouse\", \"end_of_life\", \"has_batch_no\", \"has_serial_no\", \"serial_no_series\", \"is_asset_item\", \"column_break1\", \"tolerance\", \"valuation_method\", \"warranty_period\", \"net_weight\", \"weight_uom\", \"reorder_section\", \"re_order_level\", \"re_order_qty\", \"apply_warehouse_wise_reorder_level\", \"section_break_31\", \"reorder_levels\", \"variants_section\", \"has_variants\", \"attributes\", \"purchase_details\", \"is_purchase_item\", \"min_order_qty\", \"lead_time_days\", \"buying_cost_center\", \"expense_account\", \"unit_of_measure_conversion\", \"uoms\", \"last_purchase_rate\", \"supplier_details\", \"default_supplier\", \"delivered_by_supplier\", \"manufacturer\", \"manufacturer_part_no\", \"column_break2\", \"supplier_items\", \"sales_details\", \"is_sales_item\", \"is_service_item\", \"publish_in_hub\", \"synced_with_hub\", \"income_account\", \"selling_cost_center\", \"column_break3\", \"customer_items\", \"max_discount\", \"item_tax_section_break\", \"taxes\", \"inspection_criteria\", \"inspection_required\", \"quality_parameters\", \"manufacturing\", \"is_pro_applicable\", \"is_sub_contracted_item\", \"column_break_74\", \"default_bom\", \"customer_code\", \"website_section\", \"show_in_website\", \"page_name\", \"weightage\", \"slideshow\", \"website_image\", \"thumbnail\", \"cb72\", \"website_warehouse\", \"website_item_groups\", \"sb72\", \"copy_from_item_group\", \"website_specifications\", \"web_long_description\", \"parent_website_route\"]"
  }, 
  {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
   "default_value": null, 
   "doc_type": "Item", 
   "docstatus": 0, 
@@ -671,6 +1134,40 @@
   "field_name": null, 
   "modified": "2016-03-08 19:39:35.136442", 
   "name": "Item-read_only_onload", 
+  "property": "read_only_onload", 
+  "property_type": "Check", 
+  "value": null
+ }, 
+ {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
+  "default_value": null, 
+  "doc_type": "Order Form", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocType", 
+  "field_name": null, 
+  "modified": "2016-03-14 14:04:27.446497", 
+  "name": "Order Form-read_only_onload", 
+  "property": "read_only_onload", 
+  "property_type": "Check", 
+  "value": null
+ }, 
+ {
+  "_assign": null, 
+  "_comments": null, 
+  "_liked_by": null, 
+  "_user_tags": null, 
+  "default_value": null, 
+  "doc_type": "Order Form Details", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocType", 
+  "field_name": null, 
+  "modified": "2016-03-14 14:44:32.837360", 
+  "name": "Order Form Details-read_only_onload", 
   "property": "read_only_onload", 
   "property_type": "Check", 
   "value": null

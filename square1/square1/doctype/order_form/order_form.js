@@ -19,9 +19,9 @@ cur_frm.cscript.make_Quotation =function(){
 	});
 }
 cur_frm.fields_dict['address'].get_query=function(doc){
- return {
-filters:{
-'address_title':doc.company_name
-}
-}
+	return {
+		filters:{
+			'address_title':doc.company_name
+				}
+		}
 }

@@ -59,21 +59,50 @@ cur_frm.fields_dict['address'].get_query=function(doc){
 				}
 		}
 }
-/*installation_type: function() {
-	if(frm.doc.installation_type) {
-		frm.set_value("uom", {
-			"Wall Paper": "Roll",
-			"Flooring": "Box"
-			}[frm.doc.installation_type]);
-		}
+
+
+frappe.ui.form.on("Order Form Details","length",function(frm,cdt,cdn){
+	var d  = locals[cdt][cdn];
+	var width = d.width * 0.083333	
+	var length = d.length * 0.083333	
+	if(d.width){
+		cur_frm.doc.order_details[0].site_dimension = width.toFixed(2) + "X" + length.toFixed(2) 
+		cur_frm.doc.order_details[0].area = width.toFixed(2) * length.toFixed(2)
+		refresh_field("order_details")
+	}	
+})
+
+frappe.ui.form.on("Order Form Details","width",function(frm,cdt,cdn){
+	var d  = locals[cdt][cdn];
+	var width = d.width * 0.083333	
+	var length = d.length * 0.083333	
+	if(d.length){
+		cur_frm.doc.order_details[0].site_dimension = width.toFixed(2) + "X" + length.toFixed(2) 
+		cur_frm.doc.order_details[0].area = width.toFixed(2) * length.toFixed(2)
+		refresh_field("order_details")
+	}	
+})
+
+
+frappe.ui.form.on("Order Form Details","divide_by",function(frm,cdt,cdn){
+	var d  = locals[cdt][cdn];
+	var width = d.width * 0.083333	
+	var length = d.length * 0.083333
+	if(d.installation_type == "Wall Paper"){
+		var area = (width.toFixed(2) * length.toFixed(2)) / cur_frm.doc.order_details[0].divide_by
+		cur_frm.doc.order_details[0].qty = roundNumber(area)
+		refresh_field("order_details")	
 	}
-*/
-frappe.ui.form.on("Order Form Details", "installation_type", function(frm){
-	//var d = frappe.model.get_doc(cdt, cdn);
-	if(frm.installation_type) {
-		frm.set_value("uom", {
-			"Wall Paper": "Roll",
-			"Flooring": "Box"
-			}[frm.installation_type]);
-		}
+})
+
+frappe.ui.form.on("Order Form Details","divide",function(frm,cdt,cdn){
+	var d  = locals[cdt][cdn];
+	var width = d.width * 0.083333	
+	var length = d.length * 0.083333
+	if(d.installation_type == "Flooring"){
+		var area = (width.toFixed(2) * length.toFixed(2))
+		var area_with_wastage = (area + ((area * 5) / 100)) / cur_frm.doc.order_details[0].divide
+		cur_frm.doc.order_details[0].qty = roundNumber(area_with_wastage)
+		refresh_field("order_details")	
+	}
 })

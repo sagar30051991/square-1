@@ -42,7 +42,18 @@ frappe.ui.form.on("Order Form", {
 				make_quotation();
 			});
 		}
-	},
+	}
+	/*installation_type: function(frm, cdt, cdn) {
+		console.log("hello")
+		var row = locals[cdt][cdn];
+		if(row.installation_type) {
+			console.log("inside if")
+			frm.set_value("uom", {
+				"Wall Paper": "Roll",
+				"Flooring": "Box"
+				}[frm.doc.installation_type]);
+			}
+	}*/
 });
 
 make_quotation  = function() {
@@ -59,21 +70,30 @@ cur_frm.fields_dict['address'].get_query=function(doc){
 				}
 		}
 }
-/*installation_type: function() {
-	if(frm.doc.installation_type) {
-		frm.set_value("uom", {
-			"Wall Paper": "Roll",
-			"Flooring": "Box"
-			}[frm.doc.installation_type]);
-		}
+
+
+frappe.ui.form.on("Order Form Details","installation_type", function(frm,cdt, cdn) {
+	var d = locals[cdt][cdn]
+	if(d.installation_type && d.installation_type == "Wall Paper"){
+		cur_frm.doc.order_details[0].uom = "Rolls"
+		refresh_field("order_details")
 	}
-*/
-frappe.ui.form.on("Order Form Details", "installation_type", function(frm){
-	//var d = frappe.model.get_doc(cdt, cdn);
-	if(frm.installation_type) {
-		frm.set_value("uom", {
-			"Wall Paper": "Roll",
-			"Flooring": "Box"
-			}[frm.installation_type]);
-		}
+	if(d.installation_type && d.installation_type == "Flooring"){
+		cur_frm.doc.order_details[0].uom = "Box"
+		refresh_field("order_details")
+	}
+	if(d.installation_type && d.installation_type == "Ceilling"){
+		cur_frm.doc.order_details[0].uom = "Pcs"
+		refresh_field("order_details")
+	}
 })
+
+cur_frm.fields_dict.order_details.grid.get_field("item_code").get_query = function(frm,cdt,cdn) {
+	var d = locals[cdt][cdn]
+	console.log(d.installation_type)
+	return {
+		filters: [
+			['Item','installation_type','=',d.installation_type]
+		]
+	}
+}

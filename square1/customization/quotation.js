@@ -18,14 +18,22 @@ frappe.ui.form.on("Quotation", {
 								"order_form":value.order_form
 							},
 							callback: function(r) {
-								$.each(r.message, function(i, d) {
+								console.log(r.message['customer_details'][0])
+								cur_frm.doc.customer = r.message['customer_details'][0]['customer_name'],
+								cur_frm.doc.territory = r.message['customer_details'][0]['territory'],
+								cur_frm.doc.customer_group = r.message['customer_details'][0]['customer_group'],
+								cur_frm.doc.contact_person = r.message['customer_details'][0]['contact_name'],
+								cur_frm.doc.shipping_address_name = r.message['customer_details'][0]['shipping_address_name'],
+								cur_frm.doc.customer_address = r.message['customer_details'][0]['customer_address']
+								refresh_field(["territory","contact_person","shipping_address_name","customer_address","customer","customer_group"])
+								$.each(r.message['item_details'], function(i, d) {
 								var row = frappe.model.add_child(cur_frm.doc, "Quotation Item", "items");
 								row.item_code = d.product_code,
 								row.item_name = d.item_name,
 								row.description = d.description,
 								row.stock_uom = d.stock_uom,
 								row.warehouse = d.default_warehouse,
-								row.qty = 1.000,
+								row.qty = d.qty,
 								row.rate = 0.00
 								refresh_field("items");
 								});

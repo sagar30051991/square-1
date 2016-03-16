@@ -13,8 +13,12 @@ class OrderForm(Document):
 
 
 @frappe.whitelist()
+def get_lead_list(doctype, txt, searchfield, start, page_len, filters):
+	return frappe.db.sql("""select lead_name from `tabCustomer`""",as_list=1)
+
+@frappe.whitelist()
 def get_lead(lead):
-	information = frappe.db.sql("""select company,phone from `tabLead` where name = '{0}'""".format(lead),as_dict=1)
+	information = frappe.db.sql("""select company_name,phone from `tabLead` where name = '{0}'""".format(lead),as_dict=1)
 	address = frappe.db.get_value("Address",{"lead":'{0}'.format(lead), "is_primary_address":1}, "name")
 	information[0]['address'] = address
 	return information
@@ -23,25 +27,52 @@ def get_lead(lead):
 def get_order_form(order_form):
 	order_form_doc = frappe.get_doc("Order Form",order_form)
 	order_form_list = []
+	customer_details = []
 	for item in order_form_doc.get("order_details"):
 		item_details = frappe.db.sql("""select item_name,description,stock_uom,default_warehouse 
 									from `tabItem`
-									where item_code = '{0}'""".format(item.product_code),as_dict=1)
+									where item_code = '{0}'""".format(item.item_code),as_dict=1)
 
-		order_form_list.append({'product_code':item.product_code,'item_name':item_details[0]['item_name'],
+		order_form_list.append({'product_code':item.item_code,'item_name':item_details[0]['item_name'],
 								"description":item_details[0]['description'],
 								"stock_uom":item_details[0]['stock_uom'],
-								"default_warehouse":item_details[0]['default_warehouse']})
-	return order_form_list	
+								"default_warehouse":item_details[0]['default_warehouse'],
+								"qty":item.qty})
+	customer = order_form_doc.get("company_name")
+
+	details = frappe.db.sql("""select customer_name,territory, customer_group
+			from `tabCustomer` where name = %s and docstatus != 2""", (customer), as_dict = 1)
+
+	if details:
+		ret = {
+			'customer_name':	details and details[0]['customer_name'] or '',
+			'territory':		details and details[0]['territory'] or '',
+			'customer_group':	details and details[0]['customer_group'] or '',
+			'customer_address':	frappe.db.get_value("Address",{"customer": customer, "is_primary_address":1}, "name"),
+			'shipping_address_name':	frappe.db.get_value("Address",{"customer": customer, "is_shipping_address":1}, "name")
+		}
+		# ********** get primary contact details (this is done separately coz. , in case there is no primary contact thn it would not be able to fetch customer details in case of join query)
+
+		contact_det = frappe.db.sql("""select name from `tabContact` 
+										where customer = %s and 
+										is_primary_contact = 1""", customer, as_dict = 1)
+		
+		ret['contact_name'] = contact_det and contact_det[0]['name'] or ''
+		customer_details.append(ret)
+	
+	return {"item_details":order_form_list,"customer_details":customer_details}	
 
 @frappe.whitelist()
 def make_quotation(source_name, target_doc=None):
+	def set_missing_values(source, target):
+		quotation = frappe.get_doc(target)
+		quotation.run_method("set_missing_values")
 	target_doc = get_mapped_doc("Order Form", source_name,
 		{
 			"Order Form": {
 				"doctype": "Quotation",
 				"field_map": {
-					"name": "lead"
+					"company_name": "customer"
 				}
 			},
 
@@ -56,17 +87,14 @@ def make_quotation(source_name, target_doc=None):
 			},
 		},
 
-		}, target_doc)
-	target_doc.quotation_to = "Lead"
+		}, target_doc, set_missing_values)
 
-	return target_doc	
-# def installation_type():
-# 	if (doc.installation_type == "Wall Paper"):
-# 		doc.uom="Rolls"
-# 	elif(doc.installation_type == "Flooring"):
-# 		doc.uom="Box"
-# 	elif(doc.installation_type == "Ceilling"):
-# 		doc.uom="Pcs"
+	target_doc.quotation_to = "Customer"
+
+	return target_doc
+	
+
+		
 
 
 

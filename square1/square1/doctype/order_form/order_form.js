@@ -1,7 +1,7 @@
-cur_frm.add_fetch('product_code', 'item_name', 'item_name');
-cur_frm.add_fetch('product_code', 'description', 'description');
-cur_frm.add_fetch('product_code', 'stock_uom', 'stock_uom');
-cur_frm.add_fetch('product_code', 'default_warehouse', 'warehouse');
+cur_frm.add_fetch('item_code', 'item_name', 'item_name');
+cur_frm.add_fetch('item_code', 'description', 'description');
+cur_frm.add_fetch('item_code', 'stock_uom', 'uom');
+cur_frm.add_fetch('item_code', 'default_warehouse', 'warehouse');
 
 frappe.ui.form.on("Order Form", {
 	refresh: function(doc, dt, dn) {
@@ -12,7 +12,12 @@ frappe.ui.form.on("Order Form", {
 					var dialog = new frappe.ui.Dialog({
 						title: "Get From Lead",
 							fields: [
-								{"fieldtype": "Link", "label": __("Lead"), "fieldname": "lead","options":'Lead',"reqd": 1 },
+								{"fieldtype": "Link", "label": __("Lead"), "fieldname": "lead",
+								"options":'Lead',"reqd": 1, 
+								get_query: function() {
+									return "square1.square1.doctype.order_form.order_form.get_lead_list"
+								}
+							},
 								{"fieldtype": "Button", "label": __("Get"), "fieldname": "get"},
 							]
 					});
@@ -26,7 +31,7 @@ frappe.ui.form.on("Order Form", {
 							},
 							callback: function(r) {
 								if(r.message){
-									cur_frm.doc.company_name = r.message[0]['company'],
+									cur_frm.doc.company_name = r.message[0]['company_name'],
 									cur_frm.doc.phone = r.message[0]['phone'],
 									cur_frm.doc.address = r.message[0]['address']
 								}
@@ -66,8 +71,8 @@ frappe.ui.form.on("Order Form Details","length",function(frm,cdt,cdn){
 	var width = d.width * 0.083333	
 	var length = d.length * 0.083333	
 	if(d.width){
-		cur_frm.doc.order_details[0].site_dimension = width.toFixed(2) + "X" + length.toFixed(2) 
-		cur_frm.doc.order_details[0].area = width.toFixed(2) * length.toFixed(2)
+		d.site_dimension = width.toFixed(2) + "X" + length.toFixed(2) 
+		d.area = width.toFixed(2) * length.toFixed(2)
 		refresh_field("order_details")
 	}	
 })
@@ -77,8 +82,8 @@ frappe.ui.form.on("Order Form Details","width",function(frm,cdt,cdn){
 	var width = d.width * 0.083333	
 	var length = d.length * 0.083333	
 	if(d.length){
-		cur_frm.doc.order_details[0].site_dimension = width.toFixed(2) + "X" + length.toFixed(2) 
-		cur_frm.doc.order_details[0].area = width.toFixed(2) * length.toFixed(2)
+		d.site_dimension = width.toFixed(2) + "X" + length.toFixed(2) 
+		d.area = width.toFixed(2) * length.toFixed(2)
 		refresh_field("order_details")
 	}	
 })
@@ -90,7 +95,7 @@ frappe.ui.form.on("Order Form Details","divide_by",function(frm,cdt,cdn){
 	var length = d.length * 0.083333
 	if(d.installation_type == "Wall Paper"){
 		var area = (width.toFixed(2) * length.toFixed(2)) / cur_frm.doc.order_details[0].divide_by
-		cur_frm.doc.order_details[0].qty = roundNumber(area)
+		d.qty = roundNumber(area)
 		refresh_field("order_details")	
 	}
 })
@@ -102,7 +107,7 @@ frappe.ui.form.on("Order Form Details","divide",function(frm,cdt,cdn){
 	if(d.installation_type == "Flooring"){
 		var area = (width.toFixed(2) * length.toFixed(2))
 		var area_with_wastage = (area + ((area * 5) / 100)) / cur_frm.doc.order_details[0].divide
-		cur_frm.doc.order_details[0].qty = roundNumber(area_with_wastage)
+		d.qty = roundNumber(area_with_wastage)
 		refresh_field("order_details")	
 	}
 })

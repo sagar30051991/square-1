@@ -32,10 +32,10 @@ def get_order_form(order_form):
 		item_details = frappe.db.sql("""select item_name,description,stock_uom,default_warehouse 
 									from `tabItem`
 									where item_code = '{0}'""".format(item.item_code),as_dict=1)
-
+		frappe.errprint(item.uom)
 		order_form_list.append({'product_code':item.item_code,'item_name':item_details[0]['item_name'],
 								"description":item_details[0]['description'],
-								"stock_uom":item_details[0]['stock_uom'],
+								"stock_uom":item.uom,
 								"default_warehouse":item_details[0]['default_warehouse'],
 								"qty":item.qty})
 	customer = order_form_doc.get("company_name")

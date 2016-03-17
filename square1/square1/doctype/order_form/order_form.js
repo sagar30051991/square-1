@@ -78,7 +78,7 @@ cur_frm.fields_dict['address'].get_query=function(doc){
 
 
 
-frappe.ui.form.on("Order Form Details","installation_type", function(frm,cdt, cdn) {
+/*frappe.ui.form.on("Order Form Details","installation_type", function(frm,cdt, cdn) {
 	var d = locals[cdt][cdn]
 	if(d.installation_type && d.installation_type == "Wall Paper"){
 		cur_frm.doc.order_details[0].uom = "Rolls"
@@ -92,7 +92,7 @@ frappe.ui.form.on("Order Form Details","installation_type", function(frm,cdt, cd
 		cur_frm.doc.order_details[0].uom = "Pcs"
 		refresh_field("order_details")
 	}
-})
+})*/
 
 cur_frm.fields_dict.order_details.grid.get_field("item_code").get_query = function(frm,cdt,cdn) {
 	var d = locals[cdt][cdn]
@@ -132,7 +132,7 @@ frappe.ui.form.on("Order Form Details","divide_by",function(frm,cdt,cdn){
 	var width = d.width * 0.083333	
 	var length = d.length * 0.083333
 	if(d.installation_type == "Wall Paper"){
-		var area = (width.toFixed(2) * length.toFixed(2)) / cur_frm.doc.order_details[0].divide_by
+		var area = (width.toFixed(2) * length.toFixed(2)) / d.divide_by
 		d.qty = roundNumber(area)
 		refresh_field("order_details")	
 	}
@@ -144,7 +144,7 @@ frappe.ui.form.on("Order Form Details","divide",function(frm,cdt,cdn){
 	var length = d.length * 0.083333
 	if(d.installation_type == "Flooring"){
 		var area = (width.toFixed(2) * length.toFixed(2))
-		var area_with_wastage = (area + ((area * 5) / 100)) / cur_frm.doc.order_details[0].divide
+		var area_with_wastage = (area + ((area * 5) / 100)) / d.divide
 		d.qty = roundNumber(area_with_wastage)
 		refresh_field("order_details")	
 	}

@@ -4,6 +4,7 @@
 
 from __future__ import unicode_literals
 import frappe
+import math
 from frappe.model.document import Document
 from frappe.model.mapper import get_mapped_doc
 
@@ -104,3 +105,37 @@ def get_uom_list(doctype, txt, searchfield, start, page_len, filters):
 							`tabItem`t2 where t1.parent = t2.name 
 							and t2.installation_type = '{0}' 
 							and t2.name = '{1}' """.format(filters['installation_type'],filters['item_code']),as_list=1)								
+
+@frappe.whitelist()
+def get_ceillling_item_qty(area,item_code):
+	area = int(area)
+	qty = frappe.db.sql("""select t1.qty from `tabCeilling Items`t1 where t1.item_code = '{0}' and t1.parent = "Ceilling Area" """.format(item_code),as_list=1)
+	qty = int(qty[0][0])
+	fix_area_list = frappe.db.sql("""select value from `tabSingles` where doctype = "Ceilling Area" and field = "total_area" """,as_list=1) 
+	fix_area = int(fix_area_list[0][0])
+	"""by qty"""
+	# qty_by_area = math.ceil(qty/float(fix_area))
+	# calculate_qty = area * qty_by_area	
+	# return calculate_qty
+	"""by area"""
+	if area < (fix_area - round(fix_area/float(2))):
+		#print "less than 50"
+		calculate_qty = round(qty/float(2))
+		return calculate_qty
+	
+	elif area <= fix_area and area > (fix_area - round(fix_area/float(2))):
+		#print "greater than 50 and less than or equal to 100"
+		calculate_qty = qty
+		return calculate_qty
+	
+	elif area > fix_area and area <= (fix_area + round(fix_area/float(2))):
+		#print "greater than 100 less than or equal to 150"
+		calculate_qty = qty + round(qty/float(2))
+		return calculate_qty
+	
+	elif area > (fix_area + round(fix_area/float(2))) and area <= (fix_area * round(area/float(fix_area))):
+		#print "greater than 150"
+		factor = round(area/float(fix_area))
+		calculate_qty = qty * factor
+		return calculate_qty
+

@@ -28,8 +28,9 @@ def price_list_on_update(doc, method):
 		else:
 				frappe.throw("Please enter the Correct Value")
 	elif(doc.price_list == "Dealer Rate"):
-		if(doc.price_list_rate<basic and doc.price_list_rate<discount):
-			if (doc.price_list_rate<negotiation and doc.price_list_rate>stock):
+		# var data="select price_list from tabPrice_List where item_code=",''
+		if(doc.price_list_rate<basic and doc.price_list_rate>stock):
+			if (doc.price_list_rate<negotiation and doc.price_list_rate<discount):
 				frappe.msgprint("Dealer Price Added Successfully")
 			else:
 				frappe.throw("Dealer Price is Not allow To Save")

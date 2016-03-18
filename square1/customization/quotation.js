@@ -18,7 +18,6 @@ frappe.ui.form.on("Quotation", {
 								"order_form":value.order_form
 							},
 							callback: function(r) {
-								console.log(r.message['customer_details'][0])
 								cur_frm.doc.customer = r.message['customer_details'][0]['customer_name'],
 								cur_frm.doc.territory = r.message['customer_details'][0]['territory'],
 								cur_frm.doc.customer_group = r.message['customer_details'][0]['customer_group'],
@@ -34,7 +33,11 @@ frappe.ui.form.on("Quotation", {
 								row.stock_uom = d.stock_uom,
 								row.warehouse = d.default_warehouse,
 								row.qty = d.qty,
-								row.rate = 0.00
+								row.rate = 0.00,
+								row.shade_no = d.shade_no,
+								row.installation_type = d.installation_type,
+								row.catalogue = d.catalogue,
+								row.installation_location_on_site = d.installation_location_on_site
 								refresh_field("items");
 								});
 								dialog.hide();
@@ -44,7 +47,7 @@ frappe.ui.form.on("Quotation", {
 						})
 					});
 					dialog.show();
-			}, __("Get Items from"), "btn-default");
+			});
 		}
 	},
 });

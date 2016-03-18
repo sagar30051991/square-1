@@ -133,7 +133,7 @@ frappe.ui.form.on("Order Form Details","divide_by",function(frm,cdt,cdn){
 	var length = d.length * 0.083333
 	if(d.installation_type == "Wall Paper"){
 		var area = (width.toFixed(2) * length.toFixed(2)) / d.divide_by
-		d.qty = roundNumber(area)
+		d.qty = Math.ceil(area)
 		refresh_field("order_details")	
 	}
 })
@@ -145,7 +145,32 @@ frappe.ui.form.on("Order Form Details","divide",function(frm,cdt,cdn){
 	if(d.installation_type == "Flooring"){
 		var area = (width.toFixed(2) * length.toFixed(2))
 		var area_with_wastage = (area + ((area * 5) / 100)) / d.divide
-		d.qty = roundNumber(area_with_wastage)
+		d.qty = Math.ceil(area_with_wastage)
 		refresh_field("order_details")	
 	}
 })
+
+/*cur_frm.fields_dict.order_details.grid.get_field("uom").get_query = function(doc,cdt,cdn) {
+	var d  = locals[cdt][cdn];
+	if(d.item_code){
+		return {
+			query: "square1.square1.doctype.order_form.order_form.get_uom_list",
+			filters: {
+				'installation_type': d.installation_type,
+				'item_code':d.item_code
+			}
+		}
+	}
+}*/
+
+cur_frm.fields_dict.order_details.grid.get_field("item_code").get_query = function(doc,cdt,cdn) {
+	var d = locals[cdt][cdn]
+	console.log(d.installation_type)
+	if(d.installation_type){
+		return {
+			filters:[
+				["Item","installation_type","=",d.installation_type]	
+			]
+		}
+	}
+}

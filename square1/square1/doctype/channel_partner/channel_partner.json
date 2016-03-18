@@ -7,7 +7,7 @@
  "custom": 0, 
  "docstatus": 0, 
  "doctype": "DocType", 
- "document_type": "", 
+ "document_type": "Document", 
  "fields": [
   {
    "allow_on_submit": 0, 
@@ -44,7 +44,7 @@
  "issingle": 0, 
  "istable": 0, 
  "max_attachments": 0, 
- "modified": "2016-03-14 11:52:18.228641", 
+ "modified": "2016-03-18 18:41:53.662525", 
  "modified_by": "Administrator", 
  "module": "Square1", 
  "name": "Channel Partner", 

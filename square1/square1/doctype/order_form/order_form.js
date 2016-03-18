@@ -106,23 +106,44 @@ cur_frm.fields_dict.order_details.grid.get_field("item_code").get_query = functi
 
 frappe.ui.form.on("Order Form Details","length",function(frm,cdt,cdn){
 	var d  = locals[cdt][cdn];
-	var width = d.width * 0.083333	
-	var length = d.length * 0.083333	
 	if(d.width){
-		d.site_dimension = width.toFixed(2) + "X" + length.toFixed(2) 
-		d.area = width.toFixed(2) * length.toFixed(2)
-		refresh_field("order_details")
+		var width = d.width * 0.083333	
+		var length = d.length * 0.083333	
+		console.log([d.length,d.width])
+		if(d.installation_type == "Ceilling" && d.item_code){
+			var item_code = d.item_code
+			d.site_dimension = width.toFixed(2) + "X" + length.toFixed(2) 
+			d.area = width.toFixed(2) * length.toFixed(2)
+			refresh_field("order_details")
+			var area = roundNumber(d.area)
+			calculation_for_ceilling_item_qty(area,item_code,d)
+		}	
+		else{
+			d.site_dimension = width.toFixed(2) + "X" + length.toFixed(2) 
+			d.area = width.toFixed(2) * length.toFixed(2)
+			refresh_field("order_details")
+		}
 	}	
 })
 
 frappe.ui.form.on("Order Form Details","width",function(frm,cdt,cdn){
 	var d  = locals[cdt][cdn];
-	var width = d.width * 0.083333	
-	var length = d.length * 0.083333	
 	if(d.length){
-		d.site_dimension = width.toFixed(2) + "X" + length.toFixed(2) 
-		d.area = width.toFixed(2) * length.toFixed(2)
-		refresh_field("order_details")
+		var width = d.width * 0.083333	
+		var length = d.length * 0.083333	
+		if(d.installation_type == "Ceilling" && d.item_code){
+			var item_code = d.item_code
+			d.site_dimension = width.toFixed(2) + "X" + length.toFixed(2) 
+			d.area = width.toFixed(2) * length.toFixed(2)
+			refresh_field("order_details")
+			var area = roundNumber(d.area)
+			calculation_for_ceilling_item_qty(area,item_code,d)
+		}	
+		else{
+			d.site_dimension = width.toFixed(2) + "X" + length.toFixed(2) 
+			d.area = width.toFixed(2) * length.toFixed(2)
+			refresh_field("order_details")
+		}
 	}	
 })
 
@@ -150,6 +171,22 @@ frappe.ui.form.on("Order Form Details","divide",function(frm,cdt,cdn){
 	}
 })
 
+
+calculation_for_ceilling_item_qty = function(area,item_code,d){ 
+	frappe.call({
+        method: "square1.square1.doctype.order_form.order_form.get_ceillling_item_qty",
+        args: {
+            "area":area,
+            "item_code": item_code
+        },
+       	callback: function(r){
+       		console.log(r.message)
+       	d.qty = r.message
+       	refresh_field("order_details")
+       	}
+	})
+}
+
 /*cur_frm.fields_dict.order_details.grid.get_field("uom").get_query = function(doc,cdt,cdn) {
 	var d  = locals[cdt][cdn];
 	if(d.item_code){
@@ -165,7 +202,6 @@ frappe.ui.form.on("Order Form Details","divide",function(frm,cdt,cdn){
 
 cur_frm.fields_dict.order_details.grid.get_field("item_code").get_query = function(doc,cdt,cdn) {
 	var d = locals[cdt][cdn]
-	console.log(d.installation_type)
 	if(d.installation_type){
 		return {
 			filters:[
@@ -174,3 +210,33 @@ cur_frm.fields_dict.order_details.grid.get_field("item_code").get_query = functi
 		}
 	}
 }
+<<<<<<< HEAD
+=======
+
+frappe.ui.form.on("Order Form","order_date",function(frm){
+	var order_date = new Date(cur_frm.doc.order_date)
+	var measurement_date = new Date(cur_frm.doc.measurement_date)
+	var installation_date = new Date(cur_frm.doc.installation_date)
+	if(measurement_date > order_date){
+		msgprint(__("Order Date Greater Than Or Equal To Measurement Date "))
+		cur_frm.doc.order_date = ""
+		refresh_field('order_date')
+	}
+	else if(order_date >= installation_date){
+		msgprint(__("Order Date Not Equal To Or Greater Than installation_date Date "))
+		cur_frm.doc.order_date = ""
+		refresh_field('order_date')
+	}		
+})
+
+frappe.ui.form.on("Order Form","installation_date",function(frm){
+	var order_date = new Date(cur_frm.doc.order_date)
+	var measurement_date = new Date(cur_frm.doc.measurement_date)
+	var installation_date = new Date(cur_frm.doc.installation_date)
+	if(installation_date <= order_date){
+		msgprint(__("Installation Date Greater Than Order Date "))
+		cur_frm.doc.installation_date = ""
+		refresh_field('installation_date')
+	}		
+})
+>>>>>>> 4782114c6e5ebcb974b494a313187d30110651ec

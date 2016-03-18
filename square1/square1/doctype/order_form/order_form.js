@@ -68,33 +68,44 @@ cur_frm.fields_dict['address'].get_query=function(doc){
 
 frappe.ui.form.on("Order Form Details","length",function(frm,cdt,cdn){
 	var d  = locals[cdt][cdn];
-	var width = d.width * 0.083333	
-	var length = d.length * 0.083333	
 	if(d.width){
-		d.site_dimension = width.toFixed(2) + "X" + length.toFixed(2) 
-		d.area = width.toFixed(2) * length.toFixed(2)
-		refresh_field("order_details")
-	}
-	if(d.installation_type == "Ceilling" && d.width){
-		var area = roundNumber(width.toFixed(2) * length.toFixed(2))
-		var item_code = d.item_code
-		calculation_for_ceilling_item_qty(area,item_code,d)
+		var width = d.width * 0.083333	
+		var length = d.length * 0.083333	
+		console.log([d.length,d.width])
+		if(d.installation_type == "Ceilling" && d.item_code){
+			var item_code = d.item_code
+			d.site_dimension = width.toFixed(2) + "X" + length.toFixed(2) 
+			d.area = width.toFixed(2) * length.toFixed(2)
+			refresh_field("order_details")
+			var area = roundNumber(d.area)
+			calculation_for_ceilling_item_qty(area,item_code,d)
+		}	
+		else{
+			d.site_dimension = width.toFixed(2) + "X" + length.toFixed(2) 
+			d.area = width.toFixed(2) * length.toFixed(2)
+			refresh_field("order_details")
+		}
 	}	
 })
 
 frappe.ui.form.on("Order Form Details","width",function(frm,cdt,cdn){
 	var d  = locals[cdt][cdn];
-	var width = d.width * 0.083333	
-	var length = d.length * 0.083333	
 	if(d.length){
-		d.site_dimension = width.toFixed(2) + "X" + length.toFixed(2) 
-		d.area = width.toFixed(2) * length.toFixed(2)
-		refresh_field("order_details")
-	}
-	if(d.installation_type == "Ceilling" && d.length){
-		var area = roundNumber(width.toFixed(2) * length.toFixed(2))
-		var item_code = d.item_code
-		calculation_for_ceilling_item_qty(area,item_code,d)
+		var width = d.width * 0.083333	
+		var length = d.length * 0.083333	
+		if(d.installation_type == "Ceilling" && d.item_code){
+			var item_code = d.item_code
+			d.site_dimension = width.toFixed(2) + "X" + length.toFixed(2) 
+			d.area = width.toFixed(2) * length.toFixed(2)
+			refresh_field("order_details")
+			var area = roundNumber(d.area)
+			calculation_for_ceilling_item_qty(area,item_code,d)
+		}	
+		else{
+			d.site_dimension = width.toFixed(2) + "X" + length.toFixed(2) 
+			d.area = width.toFixed(2) * length.toFixed(2)
+			refresh_field("order_details")
+		}
 	}	
 })
 

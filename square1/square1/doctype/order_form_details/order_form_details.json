@@ -498,7 +498,7 @@
    "bold": 0, 
    "collapsible": 0, 
    "default": "0", 
-   "depends_on": "", 
+   "depends_on": "eval:doc.width && doc.length", 
    "fieldname": "qty", 
    "fieldtype": "Int", 
    "hidden": 0, 

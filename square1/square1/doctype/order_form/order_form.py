@@ -117,7 +117,9 @@ def get_ceillling_item_qty(area,item_code):
 	# qty_by_area = math.ceil(qty/float(fix_area))
 	# calculate_qty = area * qty_by_area	
 	# return calculate_qty
-	"""by area""" 	
+	"""by area""" 
+	area_above_fix_area_plus_50 = fix_area * math.ceil(area/float(fix_area))
+	minus_50 = area_above_fix_area_plus_50 - 50
 	if area < (fix_area - round(fix_area/float(2))):
 		#print "less than 50"
 		calculate_qty = round(qty/float(2))
@@ -133,9 +135,15 @@ def get_ceillling_item_qty(area,item_code):
 		calculate_qty = qty + round(qty/float(2))
 		return calculate_qty
 	
+	elif area > (fix_area + round(fix_area/float(2))) and area <= minus_50:
+		#print "greater than 150 less than minus_50"
+		factor = round(area/float(fix_area))
+		calculate_qty = ((qty * factor) + round(qty/float(2)))
+		return calculate_qty
+
 	elif area > (fix_area + round(fix_area/float(2))) and area <= (fix_area * math.ceil(area/float(fix_area))):
 		#print "greater than 150"
 		factor = round(area/float(fix_area))
-		calculate_qty = ((qty * factor) + round(qty/float(2)))
+		calculate_qty = qty * factor
 		return calculate_qty
 

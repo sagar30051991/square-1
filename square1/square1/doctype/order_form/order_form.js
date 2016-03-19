@@ -163,6 +163,7 @@ calculation_for_ceilling_item_qty = function(area,item_code,d){
 }*/
 
 cur_frm.fields_dict.order_details.grid.get_field("item_code").get_query = function(doc,cdt,cdn) {
+	var d = locals[cdt][cdn]
 	var t_list = []
 	for(var i = 0 ; i < cur_frm.doc.order_details.length ; i++){
 		if(cur_frm.doc.order_details[i].item_code){

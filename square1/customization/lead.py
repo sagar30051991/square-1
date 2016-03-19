@@ -24,7 +24,5 @@ def make_order(source_name,target_doc= None,ignore_permissions=False):
 
 @frappe.whitelist()
 def check_customer(lead):
-	print lead
 	query = frappe.db.sql("""select lead_name from `tabCustomer` where lead_name = %s"""%(lead))
-	print query
 	return query

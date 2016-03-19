@@ -2,6 +2,7 @@ cur_frm.add_fetch('item_code', 'item_name', 'item_name');
 cur_frm.add_fetch('item_code', 'description', 'description');
 cur_frm.add_fetch('item_code', 'stock_uom', 'uom');
 cur_frm.add_fetch('item_code', 'default_warehouse', 'warehouse');
+cur_frm.add_fetch('item_code', 'total_area', 'installation_area');
 
 frappe.ui.form.on("Order Form", {
 	refresh: function(doc, dt, dn) {
@@ -96,7 +97,6 @@ cur_frm.fields_dict['address'].get_query=function(doc){
 
 cur_frm.fields_dict.order_details.grid.get_field("item_code").get_query = function(frm,cdt,cdn) {
 	var d = locals[cdt][cdn]
-	console.log(d.installation_type)
 	return {
 		filters: [
 			['Item','installation_type','=',d.installation_type]
@@ -109,7 +109,6 @@ frappe.ui.form.on("Order Form Details","length",function(frm,cdt,cdn){
 	if(d.width){
 		var width = d.width * 0.083333	
 		var length = d.length * 0.083333	
-		console.log([d.length,d.width])
 		if(d.installation_type == "Ceilling" && d.item_code){
 			var item_code = d.item_code
 			d.site_dimension = width.toFixed(2) + "X" + length.toFixed(2) 
@@ -122,6 +121,8 @@ frappe.ui.form.on("Order Form Details","length",function(frm,cdt,cdn){
 			d.site_dimension = width.toFixed(2) + "X" + length.toFixed(2) 
 			d.area = width.toFixed(2) * length.toFixed(2)
 			refresh_field("order_details")
+			var area = roundNumber(d.area)
+			calculation_for_other_item_qty(area,d)
 		}
 	}	
 })
@@ -143,34 +144,18 @@ frappe.ui.form.on("Order Form Details","width",function(frm,cdt,cdn){
 			d.site_dimension = width.toFixed(2) + "X" + length.toFixed(2) 
 			d.area = width.toFixed(2) * length.toFixed(2)
 			refresh_field("order_details")
+			var area = roundNumber(d.area)
+			calculation_for_other_item_qty(area,d)
 		}
 	}	
 })
 
-
-frappe.ui.form.on("Order Form Details","divide_by",function(frm,cdt,cdn){
-	var d  = locals[cdt][cdn];
-	var width = d.width * 0.083333	
-	var length = d.length * 0.083333
-	if(d.installation_type == "Wall Paper"){
-		var area = (width.toFixed(2) * length.toFixed(2)) / d.divide_by
-		d.qty = Math.ceil(area)
-		refresh_field("order_details")	
-	}
-})
-
-frappe.ui.form.on("Order Form Details","divide",function(frm,cdt,cdn){
-	var d  = locals[cdt][cdn];
-	var width = d.width * 0.083333	
-	var length = d.length * 0.083333
-	if(d.installation_type == "Flooring"){
-		var area = (width.toFixed(2) * length.toFixed(2))
-		var area_with_wastage = (area + ((area * 5) / 100)) / d.divide
-		d.qty = Math.ceil(area_with_wastage)
-		refresh_field("order_details")	
-	}
-})
-
+calculation_for_other_item_qty = function(area,d){
+	var area_with_wastage = (area + ((area * 5) / 100)) / d.installation_area
+	console.log(area_with_wastage)
+	d.qty = Math.ceil(area_with_wastage)
+	refresh_field("order_details")
+}
 
 calculation_for_ceilling_item_qty = function(area,item_code,d){ 
 	frappe.call({
@@ -180,9 +165,10 @@ calculation_for_ceilling_item_qty = function(area,item_code,d){
             "item_code": item_code
         },
        	callback: function(r){
-       		console.log(r.message)
-       	d.qty = r.message
-       	refresh_field("order_details")
+	       	if(r.message){
+	       		d.qty = r.message
+	       		refresh_field("order_details")
+       		}
        	}
 	})
 }

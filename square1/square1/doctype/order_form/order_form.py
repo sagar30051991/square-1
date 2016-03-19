@@ -5,6 +5,7 @@
 from __future__ import unicode_literals
 import frappe
 import math
+from frappe import _
 from frappe.model.document import Document
 from frappe.model.mapper import get_mapped_doc
 
@@ -110,40 +111,42 @@ def get_uom_list(doctype, txt, searchfield, start, page_len, filters):
 def get_ceillling_item_qty(area,item_code):
 	area = int(area)
 	qty = frappe.db.sql("""select t1.qty from `tabCeilling Items`t1 where t1.item_code = '{0}' and t1.parent = "Ceilling Area" """.format(item_code),as_list=1)
-	qty = int(qty[0][0])
 	fix_area_list = frappe.db.sql("""select value from `tabSingles` where doctype = "Ceilling Area" and field = "total_area" """,as_list=1) 
 	fix_area = int(fix_area_list[0][0])
+	if qty[0][0] > 0:
+		qty = int(qty[0][0])
+		"""by area""" 
+		area_above_fix_area_plus_50 = fix_area * math.ceil(area/float(fix_area))
+		minus_50 = area_above_fix_area_plus_50 - 50
+		if area < (fix_area - round(fix_area/float(2))):
+			#print "less than 50"
+			calculate_qty = round(qty/float(2))
+			return calculate_qty
+		
+		elif area <= fix_area and area > (fix_area - round(fix_area/float(2))):
+			#print "greater than 50 and less than or equal to 100"
+			calculate_qty = qty
+			return calculate_qty
+		
+		elif area > fix_area and area <= (fix_area + round(fix_area/float(2))):
+			#print "greater than 100 less than or equal to 150"
+			calculate_qty = qty + round(qty/float(2))
+			return calculate_qty
+		
+		elif area > (fix_area + round(fix_area/float(2))) and area <= minus_50:
+			#print "greater than 150 less than minus_50"
+			factor = round(area/float(fix_area))
+			calculate_qty = ((qty * factor) + round(qty/float(2)))
+			return calculate_qty
+
+		elif area > (fix_area + round(fix_area/float(2))) and area <= (fix_area * math.ceil(area/float(fix_area))):
+			#print "greater than 150"
+			factor = round(area/float(fix_area))
+			calculate_qty = qty * factor
+			return calculate_qty
+	else:
+		frappe.throw(_("Enter Quantity For Item Code '{0}' In Ceilling Area").format(item_code))	
 	"""by qty"""
 	# qty_by_area = math.ceil(qty/float(fix_area))
 	# calculate_qty = area * qty_by_area	
-	# return calculate_qty
-	"""by area""" 
-	area_above_fix_area_plus_50 = fix_area * math.ceil(area/float(fix_area))
-	minus_50 = area_above_fix_area_plus_50 - 50
-	if area < (fix_area - round(fix_area/float(2))):
-		#print "less than 50"
-		calculate_qty = round(qty/float(2))
-		return calculate_qty
-	
-	elif area <= fix_area and area > (fix_area - round(fix_area/float(2))):
-		#print "greater than 50 and less than or equal to 100"
-		calculate_qty = qty
-		return calculate_qty
-	
-	elif area > fix_area and area <= (fix_area + round(fix_area/float(2))):
-		#print "greater than 100 less than or equal to 150"
-		calculate_qty = qty + round(qty/float(2))
-		return calculate_qty
-	
-	elif area > (fix_area + round(fix_area/float(2))) and area <= minus_50:
-		#print "greater than 150 less than minus_50"
-		factor = round(area/float(fix_area))
-		calculate_qty = ((qty * factor) + round(qty/float(2)))
-		return calculate_qty
-
-	elif area > (fix_area + round(fix_area/float(2))) and area <= (fix_area * math.ceil(area/float(fix_area))):
-		#print "greater than 150"
-		factor = round(area/float(fix_area))
-		calculate_qty = qty * factor
-		return calculate_qty
-
+	# return calculate_qty 

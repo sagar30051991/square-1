@@ -202,12 +202,17 @@ calculation_for_ceilling_item_qty = function(area,item_code,d){
 
 cur_frm.fields_dict.order_details.grid.get_field("item_code").get_query = function(doc,cdt,cdn) {
 	var d = locals[cdt][cdn]
-	if(d.installation_type){
-		return {
-			filters:[
-				["Item","installation_type","=",d.installation_type]	
-			]
+	var t_list = []
+	for(var i = 0 ; i < cur_frm.doc.order_details.length ; i++){
+		if(cur_frm.doc.order_details[i].item_code){
+			t_list.push(cur_frm.doc.order_details[i].item_code);
 		}
+	}
+	return {
+		filters:[
+			["Item","installation_type","=",d.installation_type],
+			["Item","name",'not in',t_list]	
+		]
 	}
 }
 

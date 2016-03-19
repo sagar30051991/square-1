@@ -9,11 +9,11 @@ from frappe.model.document import Document
 class CeillingArea(Document):
 		pass
 
-@frappe.whitelist()
-def add_ceilling_item(installation_type,item_code):
+@frappe.whitelist(allow_guest = True)
+def add_ceilling_item(self,method):
+	item_code = self.item_code
 	ceillingArea = frappe.get_doc("Ceilling Area","Ceilling Area")
 	ceilling_item_list = []
-	#ceilling_item_dict = {}
 	if ceillingArea.ceilling_item:
 		for item in ceillingArea.ceilling_item:
 			ceilling_item_list.append(item.item_code)

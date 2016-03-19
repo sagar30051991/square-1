@@ -210,8 +210,6 @@ cur_frm.fields_dict.order_details.grid.get_field("item_code").get_query = functi
 		}
 	}
 }
-<<<<<<< HEAD
-=======
 
 frappe.ui.form.on("Order Form","order_date",function(frm){
 	var order_date = new Date(cur_frm.doc.order_date)
@@ -239,4 +237,3 @@ frappe.ui.form.on("Order Form","installation_date",function(frm){
 		refresh_field('installation_date')
 	}		
 })
->>>>>>> 4782114c6e5ebcb974b494a313187d30110651ec

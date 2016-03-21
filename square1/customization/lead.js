@@ -6,7 +6,7 @@ frappe.ui.form.on("Lead",{
 			callback: function(r){
 				if(!r.message){*/
 		var me = this
-		if(!frm.doc.__islocal) {		
+		if(!frm.doc.__islocal && cur_frm.doc.status=="Converted") {		
 				cur_frm.add_custom_button(__('Make Order'), function() {
 				cur_frm.cscript.make_order(); 
 		});

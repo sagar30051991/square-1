@@ -1,19 +1,20 @@
 frappe.ui.form.on("Lead",{ 
 	refresh: function(frm) {
-		/*frappe.call({
-			method: "square1.customization.lead.check_customer",
-			args: { "lead": frm.doc.name ,},
-			callback: function(r){
-				if(!r.message){*/
 		var me = this
+<<<<<<< HEAD
 		if(!frm.doc.__islocal && cur_frm.doc.status=="Converted") {		
 				cur_frm.add_custom_button(__('Make Order'), function() {
+=======
+		if(!frm.doc.__islocal && frm.doc.status == "Converted") {		
+				cur_frm.add_custom_button(__('Order Form'), function() {
+>>>>>>> 80b9446174daee38d03a0e100c4012caf1316223
 				cur_frm.cscript.make_order(); 
-		});
+				}, __("Make"));
+				cur_frm.page.set_inner_btn_group_as_primary(__("Make"));
+		}
 	}
-}
-
 });
+
 /*frappe.ui.form.on("Lead", "refresh", function(frm){
 		cur_frm.add_custom_button(__('Make Order'), function() {
 			cur_frm.cscript.make_order(); 

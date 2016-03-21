@@ -14,15 +14,16 @@ def add_ceilling_item(self,method):
 	item_code = self.item_code
 	ceillingArea = frappe.get_doc("Ceilling Area","Ceilling Area")
 	ceilling_item_list = []
-	if ceillingArea.ceilling_item:
-		for item in ceillingArea.ceilling_item:
-			ceilling_item_list.append(item.item_code)
+	if self.installation_type == "Ceilling":
+		if ceillingArea.ceilling_item:
+			for item in ceillingArea.ceilling_item:
+				ceilling_item_list.append(item.item_code)
 
-		if item_code not in ceilling_item_list:
+			if item_code not in ceilling_item_list:
+				row = ceillingArea.append('ceilling_item', {})
+				row.item_code = item_code
+
+		if not ceillingArea.ceilling_item:
 			row = ceillingArea.append('ceilling_item', {})
-			row.item_code = item_code
-
-	if not ceillingArea.ceilling_item:
-		row = ceillingArea.append('ceilling_item', {})
-		row.item_code = item_code					
-	ceillingArea.save(ignore_permissions = True)
+			row.item_code = item_code					
+		ceillingArea.save(ignore_permissions = True)

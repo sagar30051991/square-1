@@ -228,3 +228,40 @@ frappe.ui.form.on("Order Form","installation_date",function(frm){
 		refresh_field('installation_date')
 	}		
 })
+
+frappe.ui.form.on("Order Form",{
+	company_name:function(frm){
+	this.fatch_value_of_phone_and_address(frm)
+	},
+	onload:function(frm){
+	this.fatch_value_of_phone_and_address(frm)	
+	}
+});
+
+fatch_value_of_phone_and_address = function(frm){ 
+	if(cur_frm.doc.company_name && (!cur_frm.doc.phone || !cur_frm.doc.address)){
+		frappe.call({
+			method:"square1.square1.doctype.order_form.order_form.get_info_if_customer",
+			args:{
+				"customer":cur_frm.doc.company_name
+			},
+			callback: function(r){
+				if(r.message){
+					if(!cur_frm.doc.address){
+						cur_frm.doc.address = r.message['address']
+						refresh_field("address")
+					}
+					if(!cur_frm.doc.phone){
+						cur_frm.doc.phone = r.message['phone']
+						refresh_field("phone")
+					}
+				}
+			}
+		})
+	}
+	if(!cur_frm.doc.company_name){
+		cur_frm.doc.address = ""
+		cur_frm.doc.phone = ""
+		refresh_field(["phone","address"])
+	}
+}

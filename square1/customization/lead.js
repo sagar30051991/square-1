@@ -1,13 +1,10 @@
 frappe.ui.form.on("Lead",{ 
 	refresh: function(frm) {
 		var me = this
-<<<<<<< HEAD
 		if(!frm.doc.__islocal && cur_frm.doc.status=="Converted") {		
 				cur_frm.add_custom_button(__('Make Order'), function() {
-=======
 		if(!frm.doc.__islocal && frm.doc.status == "Converted") {		
 				cur_frm.add_custom_button(__('Order Form'), function() {
->>>>>>> 80b9446174daee38d03a0e100c4012caf1316223
 				cur_frm.cscript.make_order(); 
 				}, __("Make"));
 				cur_frm.page.set_inner_btn_group_as_primary(__("Make"));

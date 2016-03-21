@@ -1,8 +1,8 @@
 frappe.ui.form.on("Lead",{ 
 	refresh: function(frm) {
 		var me = this
-		if(!frm.doc.__islocal && cur_frm.doc.status=="Converted") {		
-				cur_frm.add_custom_button(__('Make Order'), function() {
+		/*if(!frm.doc.__islocal && cur_frm.doc.status=="Converted") {		
+				cur_frm.add_custom_button(__('Make Order'), function() {*/
 		if(!frm.doc.__islocal && frm.doc.status == "Converted") {		
 				cur_frm.add_custom_button(__('Order Form'), function() {
 				cur_frm.cscript.make_order(); 

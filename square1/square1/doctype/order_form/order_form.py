@@ -26,6 +26,18 @@ def get_lead(lead):
 	return information
 
 @frappe.whitelist()
+def get_info_if_customer(customer):
+	print customer
+	information = {}
+	phone = frappe.db.get_value("Contact",{"customer":customer, "is_primary_contact":1}, "phone")
+	address = frappe.db.get_value("Address",{"customer":customer, "is_primary_address":1}, "name")
+	information['address'] = address
+	information['phone'] = phone
+	print information
+	return information
+
+
+@frappe.whitelist()
 def get_order_form(order_form):
 	order_form_doc = frappe.get_doc("Order Form",order_form)
 	order_form_list = []

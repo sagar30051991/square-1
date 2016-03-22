@@ -114,4 +114,4 @@ doc_events = {
 # override_whitelisted_methods = {
 # 	"frappe.desk.doctype.event.event.get_events": "square1.event.get_events"
 # }
-fixtures = ["Property Setter", "Custom Field"]
+fixtures = ["Property Setter", "Custom Field","Print Format"]

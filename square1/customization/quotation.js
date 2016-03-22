@@ -51,3 +51,5 @@ frappe.ui.form.on("Quotation", {
 		}
 	},
 });
+cur_frm.add_fetch('order_form', 'client_name', 'client_name');
+cur_frm.add_fetch('order_form', 'channel_partner', 'channel_partner');

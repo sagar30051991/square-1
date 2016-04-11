@@ -16,13 +16,13 @@ def price_list_on_update(doc, method):
 		none=False
 
 	if(doc.price_list == "Basic Rate"):
-		frappe.msgprint("In basic")
+		#frappe.msgprint("In basic")
 		if(none):
-			frappe.msgprint("none")
+			#frappe.msgprint("none")
 			frappe.msgprint("Basic Price Added Successfully")
 		elif(doc.price_list_rate>stock):
-			frappe.msgprint(doc.price_list_rate)
-			frappe.msgprint(stock)
+			#frappe.msgprint(doc.price_list_rate)
+			#frappe.msgprint(stock)
 			frappe.msgprint("Basic Price Added Successfully")
 		else:
 			frappe.throw("Basic Price is Not allow To Save")
@@ -32,27 +32,26 @@ def price_list_on_update(doc, method):
 		elif (doc.price_list_rate<basic):
 			frappe.msgprint("Discount Price Added Successfully")
 		else:
-			frappe.throw("Discount Price Not Added Successfully")
+			frappe.throw("Please First Enter the Basic Rate")
 	elif(doc.price_list == "Negotiation Rate"):
 		if(none):
-			frappe.msgprint("Price Added Successfully")
+			frappe.msgprint("Negotiation Price Added Successfully")
 		elif(doc.price_list_rate<discount):
 
 			 	frappe.msgprint("Negotiation Price Added Successfully")
 		else:
-
-				frappe.throw("Please enter the Discount Rate")
+				frappe.throw("Please First Enter the Discount Rate")
 	elif(doc.price_list == "Dealer Rate"):
 		if (none):
 			frappe.msgprint("Dealer Price Added Successfully")
 		elif (doc.price_list_rate<negotiation and doc.price_list_rate>stock): 
 			frappe.msgprint("Dealer Price Added Successfully")
 		else:
-			frappe.throw("Please enter the Negotiation Rate")
+			frappe.throw("Please First Enter the Negotiation Rate")
 	elif(doc.price_list == "Stock Rate"):
 		if (none):
 			frappe.msgprint("Stock Price Added Successfully")
 		elif (doc.price_list_rate<dealer): 
 			frappe.msgprint("Stock Price Added Successfully")
 		else:
-			frappe.throw("Please enter the Stock Rate")
+			frappe.throw("Please First Enter the Dealer Rate")

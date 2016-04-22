@@ -31,3 +31,11 @@ def make_order(source_name,target_doc= None,ignore_permissions=False):
 def check_customer(lead):
 	query = frappe.db.sql("""select lead_name from `tabCustomer` where lead_name = %s"""%(lead))
 	return query
+
+@frappe.whitelist()
+def get_sms_address(lead):
+	address=frappe.db.get_value("Address",{"is_primary_address":1,"lead":lead},["address_title","address_type","address_line1","address_line2","city","state","pincode","phone"])
+	if address:
+		return "%s-%s\n%s,%s\n%s,%s-%s\nPhone: %s"%(address[0] or "",  address[1] or "", address[2] or "", address[3] or "", address[4] or "", address[5] or "", address[6] or "", address[7] or "") 
+	else:
+		return ""

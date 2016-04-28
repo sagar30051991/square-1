@@ -19,12 +19,10 @@ frappe.ui.form.on("Lead",{
 send_sms= function(frm) {
 		frappe.require("assets/erpnext/js/sms_manager.js");
 		var sms_man = new SMSManager(cur_frm.doc);
-		console.log(sms_man)
 		fd = sms_man.dialog.fields_dict;
 		fatch_addr(fd,frm)
 		
 	},
-		
 /*frappe.ui.form.on("Lead", "refresh", function(frm){
 		cur_frm.add_custom_button(__('Make Order'), function() {
 			cur_frm.cscript.make_order(); 
@@ -58,7 +56,6 @@ fatch_addr = function(fd,frm){
 		},
 		callback: function(r) {
 			if(r.message) {
-				console.log(r.message)
 				fd.message.set_input("Contact Details\n"+r.message)
 			}
 		}

@@ -80,7 +80,10 @@ doc_events = {
 	},
 	"Item": {
 		"on_update": "square1.square1.doctype.ceilling_area.ceilling_area.add_ceilling_item"
-	}	
+	},
+	"Lead": {	
+		"validate": "square1.customization.lead.validate_source"
+	},
 }
 # Scheduled Tasks
 # ---------------
